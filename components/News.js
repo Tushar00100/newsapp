@@ -25,42 +25,42 @@ export default class News extends Component  {
     }
     async componentDidMount(){
         console.log("mount");
-        //  let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=f2bfd8dcf12040ad91cfed71107d1a90&page=1`;
-        //  this.setState({loading : true});
-        //  let data = await fetch(url);
-        //  let parsedData = await data.json()
-        //  this.setState({
-        //    articles:parsedData.articles,
-        //    loading: false
-        //   })
+         let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=f2bfd8dcf12040ad91cfed71107d1a90&page=1`;
+         this.setState({loading : true});
+         let data = await fetch(url);
+         let parsedData = await data.json()
+         this.setState({
+           articles:parsedData.articles,
+           loading: false
+          })
     }
     handleNext = async()=>{
       console.log("next");
-        //    let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=f2bfd8dcf12040ad91cfed71107d1a90&page=${this.state.page + 1}`;
-        //    this.setState({loading : true});
-        //    let data = await fetch(url);
-        //  let parsedData = await data.json()
+           let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=f2bfd8dcf12040ad91cfed71107d1a90&page=${this.state.page + 1}`;
+           this.setState({loading : true});
+           let data = await fetch(url);
+         let parsedData = await data.json()
          
-        //    this.setState({
-        //      page : this.state.page + 1,
-        //      articles:parsedData.articles,
-        //      loading: false
+           this.setState({
+             page : this.state.page + 1,
+             articles:parsedData.articles,
+             loading: false
 
-        //     })
+            })
     }
     handlePrevious =  async ()=>{
       console.log("prev");
 
-      // let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=f2bfd8dcf12040ad91cfed71107d1a90&page=${this.state.page - 1}`;
-      //    this.setState({loading : true});
-      //    let data = await fetch(url);
-      //    let parsedData = await data.json()
-      //    this.setState({articles:parsedData.articles})
-      //      this.setState({
-      //        page : this.state.page - 1,
-      //        articles:parsedData.articles,
-      //        loading: false
-      //       })
+      let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=f2bfd8dcf12040ad91cfed71107d1a90&page=${this.state.page - 1}`;
+         this.setState({loading : true});
+         let data = await fetch(url);
+         let parsedData = await data.json()
+         this.setState({articles:parsedData.articles})
+           this.setState({
+             page : this.state.page - 1,
+             articles:parsedData.articles,
+             loading: false
+            })
     }
   render() {
     return (
@@ -68,7 +68,7 @@ export default class News extends Component  {
         <h2 style={{marginTop:'70px'}}>NewsApp - Top {this.props.category} Headlines</h2>
         {this.state.loading && <Spinner/>}
         <div className="row my-3">
-        {/* {this.state.articles.map((element)=>{
+        {this.state.articles.map((element)=>{
           return <div className="col-md-4" key ={element.url}>   
           <NewsItem   title={element.title} description={element.description} author={element.author} date={element.publishedAt} source={element.source.name} imgUrl={element.urlToImage}
               newsUrl={element.url}  />
@@ -77,7 +77,7 @@ export default class News extends Component  {
         </div>
         <div className="conatiner d-flex justify-content-between">
         <button disabled={this.state.page<2} type="button" className="btn btn-primary" onClick={this.handlePrevious}>&larr; Previous</button>
-        <button type="button" className="btn btn-primary" onClick={this.handleNext}>Next &rarr;</button> */}
+        <button type="button" className="btn btn-primary" onClick={this.handleNext}>Next &rarr;</button>
         </div>
       </div>
     )
